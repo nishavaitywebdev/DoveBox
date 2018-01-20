@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Filters extends Component {
     // sets the filter entered by user
-    handleChange = () => {
+    handleChange() {
         this.props.onUserInput(
             this.refs.filterTextInput.value,
             this.refs.statusInput.value,

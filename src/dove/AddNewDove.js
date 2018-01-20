@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddNewDove extends Component{
-    createDove = () => {
+    createDove() {
         // get values from the form and create a dove object
         const dove = {
             active: this.refs.active.checked,
@@ -56,7 +56,7 @@ class AddNewDove extends Component{
                     </div>
                     <div className='col-sm-2'>
                         <a className='btn btn-primary btn-block'
-                           onClick={this.createDove}>Add Dove</a>
+                           onClick={() => this.createDove()}>Add Dove</a>
                    </div>
                 </div>
             </div>

@@ -20172,9 +20172,7 @@ var DoveList = function (_Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DoveList.__proto__ || Object.getPrototypeOf(DoveList)).call.apply(_ref, [this].concat(args))), _this), _this.deleteDove = function (id) {
-            _this.props.onUserInputDelete(id);
-        }, _this.getTableRows = function (doves) {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DoveList.__proto__ || Object.getPrototypeOf(DoveList)).call.apply(_ref, [this].concat(args))), _this), _this.getTableRows = function (doves) {
             var doveRows = [];
             // for each dove create a table row with its property values
             doves.forEach(function (dove) {
@@ -20229,6 +20227,11 @@ var DoveList = function (_Component) {
     }
 
     _createClass(DoveList, [{
+        key: 'deleteDove',
+        value: function deleteDove(id) {
+            this.props.onUserInputDelete(id);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var doves = this.getTableRows(this.props.doves);
@@ -21622,7 +21625,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var baseUrl = 'http://localhost:5000/doves';
 
-// To get doves by calling teh api
+// To get doves by calling the api
 function getDoves() {
     return function (dispatch) {
         (0, _fetch.fetchGet)(baseUrl).then(function (response) {
@@ -22284,24 +22287,19 @@ var Filters = function (_Component) {
     _inherits(Filters, _Component);
 
     function Filters() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
         _classCallCheck(this, Filters);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Filters.__proto__ || Object.getPrototypeOf(Filters)).call.apply(_ref, [this].concat(args))), _this), _this.handleChange = function () {
-            _this.props.onUserInput(_this.refs.filterTextInput.value, _this.refs.statusInput.value, _this.refs.imagesCollectedRangeInput.value);
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).apply(this, arguments));
     }
-    // sets the filter entered by user
-
 
     _createClass(Filters, [{
+        key: 'handleChange',
+
+        // sets the filter entered by user
+        value: function handleChange() {
+            this.props.onUserInput(this.refs.filterTextInput.value, this.refs.statusInput.value, this.refs.imagesCollectedRangeInput.value);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -22428,38 +22426,35 @@ var AddNewDove = function (_Component) {
     _inherits(AddNewDove, _Component);
 
     function AddNewDove() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
         _classCallCheck(this, AddNewDove);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AddNewDove.__proto__ || Object.getPrototypeOf(AddNewDove)).call.apply(_ref, [this].concat(args))), _this), _this.createDove = function () {
-            // get values from the form and create a dove object
-            var dove = {
-                active: _this.refs.active.checked,
-                color: _this.refs.color.value,
-                images_collected: _this.refs.imagesCollected.value,
-                last_command: _this.refs.lastCommand.value,
-                deorbit_dt: _this.refs.deOrbit.value
-            };
-            _this.props.onUserInput(dove);
-            // Reset the form after dove is created
-            _this.refs.imagesCollected.value = '';
-            _this.refs.lastCommand.value = '';
-            _this.refs.color.value = '';
-            _this.refs.deOrbit.value = '';
-            _this.refs.active.checked = false;
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        return _possibleConstructorReturn(this, (AddNewDove.__proto__ || Object.getPrototypeOf(AddNewDove)).apply(this, arguments));
     }
 
     _createClass(AddNewDove, [{
+        key: 'createDove',
+        value: function createDove() {
+            // get values from the form and create a dove object
+            var dove = {
+                active: this.refs.active.checked,
+                color: this.refs.color.value,
+                images_collected: this.refs.imagesCollected.value,
+                last_command: this.refs.lastCommand.value,
+                deorbit_dt: this.refs.deOrbit.value
+            };
+            this.props.onUserInput(dove);
+            // Reset the form after dove is created
+            this.refs.imagesCollected.value = '';
+            this.refs.lastCommand.value = '';
+            this.refs.color.value = '';
+            this.refs.deOrbit.value = '';
+            this.refs.active.checked = false;
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -22519,7 +22514,9 @@ var AddNewDove = function (_Component) {
                         _react2.default.createElement(
                             'a',
                             { className: 'btn btn-primary btn-block',
-                                onClick: this.createDove },
+                                onClick: function onClick() {
+                                    return _this2.createDove();
+                                } },
                             'Add Dove'
                         )
                     )

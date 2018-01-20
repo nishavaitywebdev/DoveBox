@@ -21,7 +21,7 @@ const style = {
 };
 
 class DoveList extends Component {
-    deleteDove = (id) => {
+    deleteDove(id) {
         this.props.onUserInputDelete(id);
     }
 
