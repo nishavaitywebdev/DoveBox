@@ -5,9 +5,30 @@
   "main": "./lib/server/index.js",
   "bin": "./bin/index.js",
   "dependencies": {
-    "json-server": "^0.9.4"
+    "babel-core": "latest",
+    "babel-loader": "^6.1",
+    "babel-polyfill": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-preset-stage-2": "latest",
+    "body-parser": "^1.17.2",
+    "isomorphic-fetch": "^2.2.1",
+    "json-server": "^0.9.4",
+    "react": "^16.2.0",
+    "react-redux": "latest",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "redux": "latest",
+    "redux-devtools": "latest",
+    "redux-logger": "latest",
+    "redux-persist": "^5.4.0",
+    "redux-thunk": "latest",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "latest"
   },
   "scripts": {
-    "start": "json-server --port 3000 --watch db.json"
+    "start": "json-server --port 5000 --watch db.json",
+    "build": "webpack",
+    "start-dev": "react-scripts start"
   }
 }

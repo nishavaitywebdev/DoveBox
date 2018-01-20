@@ -1,0 +1,12 @@
+// Dove action names
+export const GET_DOVES = 'GET_DOVES';
+export const GET_DOVES_SUCCESS = 'GET_DOVES_SUCCESS';
+export const GET_DOVES_FAILURE = 'GET_DOVES_FAILURE';
+
+export const ADD_DOVE = 'ADD_DOVE';
+export const ADD_DOVE_SUCCESS = 'ADD_DOVE_SUCCESS';
+export const ADD_DOVE_FAILURE = 'ADD_DOVE_FAILURE';
+
+export const DELETE_DOVE = 'DELETE_DOVE';
+export const DELETE_DOVE_SUCCESS = 'DELETE_DOVE_SUCCESS';
+export const DELETE_DOVE_FAILURE = 'DELETE_DOVE_FAILURE';
