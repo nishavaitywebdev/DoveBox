@@ -13,15 +13,15 @@ const loggerMiddleware = createLogger();
 store = createStore(reducer, persistedState, applyMiddleware(ReduxThunk, loggerMiddleware));
 
 store.subscribe(() => {
-    savedState(store.getState());
+  savedState(store.getState());
 });
 
 export default class MainApp extends Component {
-    render() {
-        return(
-            <Provider store={store}>
-                <App children={this.props.children}/>
-            </Provider>
-        );
-    }
+  render() {
+    return(
+      <Provider store={store}>
+        <App children={this.props.children}/>
+      </Provider>
+    );
+  }
 }
