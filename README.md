@@ -1,3 +1,6 @@
+### DoveBox
+React app to display json data in a table, filter the data, add new records ...
+
 ### Run instructions
 Clone this repo and run `npm install` in the root directory to install required npm packages.Run `npm start` to initialize the dummy API server which will run on port 5000 and will be accessible on `localhost:5000/doves`.
 Run `npm run start-dev` to run react-scripts which will run the app on `http://localhost:3000/`
@@ -19,5 +22,3 @@ Run `npm run start-dev` to run react-scripts which will run the app on `http://l
 * App.js contains all the components DoveList, Filters etc. and communicates the state of the app between redux store and child components inside App.
 * reducer.js manipulates state of the app based on the action type that is received.
 * MainApp.js, localStorage.js are other miscellaneous components related to managing state of the application.
-
-To submit your app email us at: mcui@planet.com with a link to your repo. If you have questions or issues with the test, please let us know.
