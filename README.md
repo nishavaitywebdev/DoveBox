@@ -22,3 +22,4 @@ Run `npm run start-dev` to run react-scripts which will run the app on `http://l
 * App.js contains all the components DoveList, Filters etc. and communicates the state of the app between redux store and child components inside App.
 * reducer.js manipulates state of the app based on the action type that is received.
 * MainApp.js, localStorage.js are other miscellaneous components related to managing state of the application.
+* fetch.js to exports reusable http methods to call the api

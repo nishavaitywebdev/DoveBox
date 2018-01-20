@@ -19284,7 +19284,7 @@ module.exports = camelize;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -19327,30 +19327,30 @@ var loggerMiddleware = (0, _reduxLogger.createLogger)();
 store = (0, _redux.createStore)(_reducer2.default, persistedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, loggerMiddleware));
 
 store.subscribe(function () {
-    (0, _localStorage.savedState)(store.getState());
+  (0, _localStorage.savedState)(store.getState());
 });
 
 var MainApp = function (_Component) {
-    _inherits(MainApp, _Component);
+  _inherits(MainApp, _Component);
 
-    function MainApp() {
-        _classCallCheck(this, MainApp);
+  function MainApp() {
+    _classCallCheck(this, MainApp);
 
-        return _possibleConstructorReturn(this, (MainApp.__proto__ || Object.getPrototypeOf(MainApp)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MainApp.__proto__ || Object.getPrototypeOf(MainApp)).apply(this, arguments));
+  }
+
+  _createClass(MainApp, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactRedux.Provider,
+        { store: store },
+        _react2.default.createElement(_App2.default, { children: this.props.children })
+      );
     }
+  }]);
 
-    _createClass(MainApp, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                _reactRedux.Provider,
-                { store: store },
-                _react2.default.createElement(_App2.default, { children: this.props.children })
-            );
-        }
-    }]);
-
-    return MainApp;
+  return MainApp;
 }(_react.Component);
 
 exports.default = MainApp;
@@ -19363,7 +19363,7 @@ exports.default = MainApp;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -19403,95 +19403,95 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var style = {
-    app: {
-        textAlign: 'center',
-        paddingBottom: '50px',
-        position: 'relative',
-        marginTop: '50px'
-    },
-    appHeader: {
-        position: 'absolute',
-        backgroundColor: '#222',
-        height: '60px',
-        width: '100%',
-        textAlign: 'center',
-        color: 'white'
-    },
-    appFooter: {
-        backgroundColor: '#222',
-        height: '30px',
-        padding: '20px',
-        color: 'white'
-    }
+  app: {
+    textAlign: 'center',
+    paddingBottom: '50px',
+    position: 'relative',
+    marginTop: '50px'
+  },
+  appHeader: {
+    position: 'absolute',
+    backgroundColor: '#222',
+    height: '60px',
+    width: '100%',
+    textAlign: 'center',
+    color: 'white'
+  },
+  appFooter: {
+    backgroundColor: '#222',
+    height: '30px',
+    padding: '20px',
+    color: 'white'
+  }
 };
 
 var App = function (_Component) {
-    _inherits(App, _Component);
+  _inherits(App, _Component);
 
-    function App() {
-        _classCallCheck(this, App);
+  function App() {
+    _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.getDoves();
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var doves = this.props.doves;
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'header',
+          { style: style.appHeader },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'List of Doves'
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          { className: 'container', style: style.app },
+          _react2.default.createElement(_Filters2.default, { onUserInput: this.props.setFilters }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(_AddNewDove2.default, { onUserInput: this.props.addDove }),
+          _react2.default.createElement(_DoveList2.default, {
+            doves: doves,
+            onUserInputDelete: this.props.deleteDove })
+        ),
+        _react2.default.createElement('footer', { className: 'navbar-fixed-bottom', style: style.appFooter })
+      );
+    }
+  }]);
 
-    _createClass(App, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.props.getDoves();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var doves = this.props.doves;
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'header',
-                    { style: style.appHeader },
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'List of Doves'
-                    )
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'container', style: style.app },
-                    _react2.default.createElement(_Filters2.default, { onUserInput: this.props.setFilters }),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement(_AddNewDove2.default, { onUserInput: this.props.addDove }),
-                    _react2.default.createElement(_DoveList2.default, {
-                        doves: doves,
-                        onUserInputDelete: this.props.deleteDove })
-                ),
-                _react2.default.createElement('footer', { className: 'navbar-fixed-bottom', style: style.appFooter })
-            );
-        }
-    }]);
-
-    return App;
+  return App;
 }(_react.Component);
 
 App.propTypes = {
-    doves: _propTypes2.default.array
+  doves: _propTypes2.default.array
 };
 
 function mapStateToProps(state) {
-    return {
-        doves: state.doves
-    };
+  return {
+    doves: state.doves
+  };
 }
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return (0, _redux.bindActionCreators)({
-        getDoves: _Actions.getDoves,
-        addDove: _Actions.addDove,
-        deleteDove: _Actions.deleteDove,
-        setFilters: _Actions.setFilters
-    }, dispatch);
+  return (0, _redux.bindActionCreators)({
+    getDoves: _Actions.getDoves,
+    addDove: _Actions.addDove,
+    deleteDove: _Actions.deleteDove,
+    setFilters: _Actions.setFilters
+  }, dispatch);
 };
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
@@ -20118,7 +20118,7 @@ module.exports = function() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20140,166 +20140,166 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var style = {
-    table: {
-        width: '100%',
-        borderCollapse: 'collapse'
-    },
-    tableHeadRow: {
-        height: '40px',
-        padding: '5px',
-        backgroundColor: '#222',
-        color: 'white'
-    },
-    tableRow: {
-        backgroundColor: '#eee',
-        height: '30px',
-        padding: '5px',
-        color: 'black'
-    }
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse'
+  },
+  tableHeadRow: {
+    height: '40px',
+    padding: '5px',
+    backgroundColor: '#222',
+    color: 'white'
+  },
+  tableRow: {
+    backgroundColor: '#eee',
+    height: '30px',
+    padding: '5px',
+    color: 'black'
+  }
 };
 
 var DoveList = function (_Component) {
-    _inherits(DoveList, _Component);
+  _inherits(DoveList, _Component);
 
-    function DoveList() {
-        var _ref;
+  function DoveList() {
+    var _ref;
 
-        var _temp, _this, _ret;
+    var _temp, _this, _ret;
 
-        _classCallCheck(this, DoveList);
+    _classCallCheck(this, DoveList);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DoveList.__proto__ || Object.getPrototypeOf(DoveList)).call.apply(_ref, [this].concat(args))), _this), _this.getTableRows = function (doves) {
-            var doveRows = [];
-            // for each dove create a table row with its property values
-            doves.forEach(function (dove) {
-                // assign color and state values to dove
-                var styleColor = { width: '150px', backgroundColor: '' + dove.color };
-                var active = dove.active ? 'Active' : 'Inactive';
-                doveRows.push(_react2.default.createElement(
-                    'tr',
-                    { key: dove.id, style: style.tableRow },
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        dove.id
-                    ),
-                    _react2.default.createElement('td', { style: styleColor }),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        dove.last_command,
-                        '\xA0'
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        dove.images_collected
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        active
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        dove.deorbit_dt
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        _react2.default.createElement(
-                            'a',
-                            { onClick: function onClick() {
-                                    return _this.deleteDove(dove.id);
-                                } },
-                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
-                        )
-                    )
-                ));
-            });
-            return doveRows;
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    _createClass(DoveList, [{
-        key: 'deleteDove',
-        value: function deleteDove(id) {
-            this.props.onUserInputDelete(id);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var doves = this.getTableRows(this.props.doves);
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'table',
-                    { className: 'list-group', style: style.table },
-                    _react2.default.createElement(
-                        'thead',
-                        null,
-                        _react2.default.createElement(
-                            'tr',
-                            { style: style.tableHeadRow },
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'ID'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Color'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Last Command\xA0'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Images Collected'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Status'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'deorbit_dt'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Delete Dove'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'tbody',
-                        null,
-                        doves
-                    )
-                )
-            );
-        }
-    }]);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DoveList.__proto__ || Object.getPrototypeOf(DoveList)).call.apply(_ref, [this].concat(args))), _this), _this.getTableRows = function (doves) {
+      var doveRows = [];
+      // for each dove create a table row with its property values
+      doves.forEach(function (dove) {
+        // assign color and state values to dove
+        var styleColor = { width: '150px', backgroundColor: '' + dove.color };
+        var active = dove.active ? 'Active' : 'Inactive';
+        doveRows.push(_react2.default.createElement(
+          'tr',
+          { key: dove.id, style: style.tableRow },
+          _react2.default.createElement(
+            'td',
+            null,
+            dove.id
+          ),
+          _react2.default.createElement('td', { style: styleColor }),
+          _react2.default.createElement(
+            'td',
+            null,
+            dove.last_command,
+            '\xA0'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            dove.images_collected
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            active
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            dove.deorbit_dt
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            _react2.default.createElement(
+              'a',
+              { onClick: function onClick() {
+                  return _this.deleteDove(dove.id);
+                } },
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
+            )
+          )
+        ));
+      });
+      return doveRows;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
 
-    return DoveList;
+  _createClass(DoveList, [{
+    key: 'deleteDove',
+    value: function deleteDove(id) {
+      this.props.onUserInputDelete(id);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var doves = this.getTableRows(this.props.doves);
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'table',
+          { className: 'list-group', style: style.table },
+          _react2.default.createElement(
+            'thead',
+            null,
+            _react2.default.createElement(
+              'tr',
+              { style: style.tableHeadRow },
+              _react2.default.createElement(
+                'td',
+                null,
+                'ID'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'Color'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'Last Command\xA0'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'Images Collected'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'Status'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'deorbit_dt'
+              ),
+              _react2.default.createElement(
+                'td',
+                null,
+                'Delete Dove'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'tbody',
+            null,
+            doves
+          )
+        )
+      );
+    }
+  }]);
+
+  return DoveList;
 }(_react.Component);
 
 DoveList.propTypes = {
-    doves: _propTypes2.default.array,
-    onUserInputDelete: _propTypes2.default.func
+  doves: _propTypes2.default.array,
+  onUserInputDelete: _propTypes2.default.func
 };
 
 exports.default = DoveList;
@@ -21602,7 +21602,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.getDoves = getDoves;
 exports.getDovesSuccess = getDovesSuccess;
@@ -21623,96 +21623,97 @@ var _fetch = __webpack_require__(75);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+// Base api url for the dove data 
 var baseUrl = 'http://localhost:5000/doves';
 
 // To get doves by calling the api
 function getDoves() {
-    return function (dispatch) {
-        (0, _fetch.fetchGet)(baseUrl).then(function (response) {
-            return dispatch(getDovesSuccess(response));
-        }).catch(function (error) {
-            return dispatch(getDovesFailure(error));
-        });
-    };
+  return function (dispatch) {
+    (0, _fetch.fetchGet)(baseUrl).then(function (response) {
+      return dispatch(getDovesSuccess(response));
+    }).catch(function (error) {
+      return dispatch(getDovesFailure(error));
+    });
+  };
 };
 
 function getDovesSuccess(doves) {
-    return {
-        type: types.GET_DOVES_SUCCESS,
-        doves: doves
-    };
+  return {
+    type: types.GET_DOVES_SUCCESS,
+    doves: doves
+  };
 };
 
 function getDovesFailure(error) {
-    return {
-        type: types.GET_DOVES_FAILURE,
-        error: error
-    };
+  return {
+    type: types.GET_DOVES_FAILURE,
+    error: error
+  };
 };
 
 // To add new dove to the list
 function addDove(formValues) {
-    return function (dispatch) {
-        (0, _fetch.fetchPost)(baseUrl, formValues).then(function (response) {
-            return dispatch(addDoveSuccess(response));
-        }).catch(function (error) {
-            return dispatch(addDoveFailure(error));
-        });
-    };
+  return function (dispatch) {
+    (0, _fetch.fetchPost)(baseUrl, formValues).then(function (response) {
+      return dispatch(addDoveSuccess(response));
+    }).catch(function (error) {
+      return dispatch(addDoveFailure(error));
+    });
+  };
 };
 
 function addDoveSuccess(dove) {
-    return {
-        type: types.ADD_DOVE_SUCCESS,
-        dove: dove
-    };
+  return {
+    type: types.ADD_DOVE_SUCCESS,
+    dove: dove
+  };
 };
 
 function addDoveFailure(error) {
-    return {
-        type: types.ADD_DOVE_FAILURE,
-        error: error
-    };
+  return {
+    type: types.ADD_DOVE_FAILURE,
+    error: error
+  };
 };
 
 // To delete a dove from the list
 function deleteDove(formValues) {
-    return function (dispatch) {
-        (0, _fetch.fetchDelete)(baseUrl + '/' + formValues).then(function (response) {
-            return dispatch(deleteDoveSuccess(formValues));
-        }).catch(function (error) {
-            return dispatch(deleteDoveFailure(error));
-        });
-    };
+  return function (dispatch) {
+    (0, _fetch.fetchDelete)(baseUrl + '/' + formValues).then(function (response) {
+      return dispatch(deleteDoveSuccess(formValues));
+    }).catch(function (error) {
+      return dispatch(deleteDoveFailure(error));
+    });
+  };
 };
 
 function deleteDoveSuccess(dove) {
-    return {
-        type: types.DELETE_DOVE_SUCCESS,
-        dove: dove
-    };
+  return {
+    type: types.DELETE_DOVE_SUCCESS,
+    dove: dove
+  };
 };
 
 function deleteDoveFailure(error) {
-    return {
-        type: types.DELETE_DOVE_FAILURE,
-        error: error
-    };
+  return {
+    type: types.DELETE_DOVE_FAILURE,
+    error: error
+  };
 };
 
-// To query the api by teh selected filters
+// To query the api by the selected filters
 function setFilters(searchText, statusInput, imagesCollectedRange) {
-    var lastCommandQuery = searchText === '' ? '' : '&last_command_like=' + searchText;
-    var statusQuery = statusInput === '' ? '' : '&active=' + statusInput;
-    var imagesQuery = '?images_collected_gte=' + imagesCollectedRange;
-    var url = baseUrl + imagesQuery + statusQuery + lastCommandQuery;
-    return function (dispatch) {
-        (0, _fetch.fetchGet)(url).then(function (response) {
-            return dispatch(getDovesSuccess(response));
-        }).catch(function (error) {
-            return dispatch(getDovesFailure(error));
-        });
-    };
+  var lastCommandQuery = searchText === '' ? '' : '&last_command_like=' + searchText;
+  var statusQuery = statusInput === '' ? '' : '&active=' + statusInput;
+  var imagesQuery = '?images_collected_gte=' + imagesCollectedRange;
+  var url = baseUrl + imagesQuery + statusQuery + lastCommandQuery;
+  return function (dispatch) {
+    (0, _fetch.fetchGet)(url).then(function (response) {
+      return dispatch(getDovesSuccess(response));
+    }).catch(function (error) {
+      return dispatch(getDovesFailure(error));
+    });
+  };
 };
 
 /***/ }),
@@ -21723,7 +21724,7 @@ function setFilters(searchText, statusInput, imagesCollectedRange) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.fetchDelete = exports.fetchPut = exports.fetchPost = exports.fetchGet = undefined;
 
@@ -21734,45 +21735,45 @@ var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var opts = {
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    credentials: 'same-origin'
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  credentials: 'same-origin'
 };
 
 var fetchGet = exports.fetchGet = function fetchGet(url) {
-    return (0, _isomorphicFetch2.default)(url, opts).then(function (response) {
-        return response.json();
-    });
+  return (0, _isomorphicFetch2.default)(url, opts).then(function (response) {
+    return response.json();
+  });
 };
 
 var fetchPost = exports.fetchPost = function fetchPost(url, data) {
-    var optsU = Object.assign({}, opts, {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-    return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
-        return response.json();
-    });
+  var optsU = Object.assign({}, opts, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  });
+  return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
+    return response.json();
+  });
 };
 
 var fetchPut = exports.fetchPut = function fetchPut(url, data) {
-    var optsU = Object.assign({}, opts, {
-        method: 'PUT',
-        body: JSON.stringify(data)
-    });
-    return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
-        return response.json();
-    });
+  var optsU = Object.assign({}, opts, {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  });
+  return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
+    return response.json();
+  });
 };
 
 var fetchDelete = exports.fetchDelete = function fetchDelete(url) {
-    var optsU = Object.assign({}, opts, {
-        method: 'DELETE'
-    });
-    return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
-        return response.json();
-    });
+  var optsU = Object.assign({}, opts, {
+    method: 'DELETE'
+  });
+  return (0, _isomorphicFetch2.default)(url, optsU).then(function (response) {
+    return response.json();
+  });
 };
 
 /***/ }),
@@ -22262,7 +22263,7 @@ module.exports = self.fetch.bind(self);
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22283,114 +22284,134 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var style = { textAlign: 'left' };
+
 var Filters = function (_Component) {
-    _inherits(Filters, _Component);
+  _inherits(Filters, _Component);
 
-    function Filters() {
-        _classCallCheck(this, Filters);
+  function Filters() {
+    _classCallCheck(this, Filters);
 
-        return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Filters.__proto__ || Object.getPrototypeOf(Filters)).apply(this, arguments));
+  }
+
+  _createClass(Filters, [{
+    key: 'handleChange',
+
+    // sets the filter entered by user
+    value: function handleChange() {
+      this.props.onUserInput(this.refs.filterTextInput.value, this.refs.statusInput.value, this.refs.imagesCollectedRangeInput.value);
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(Filters, [{
-        key: 'handleChange',
+      return _react2.default.createElement(
+        'div',
+        { className: 'col-sm-12' },
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          { style: style },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Filter Doves'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            className: 'form-control',
+            placeholder: 'Search in last command...',
+            value: this.props.filterText,
+            ref: 'filterTextInput',
+            onChange: function onChange() {
+              return _this2.handleChange();
+            } })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          _react2.default.createElement(
+            'select',
+            {
+              className: 'form-control',
+              value: this.props.statusFilter,
+              ref: 'statusInput',
+              onChange: function onChange() {
+                return _this2.handleChange();
+              } },
+            _react2.default.createElement(
+              'option',
+              { value: '' },
+              'Filter by State'
+            ),
+            _react2.default.createElement(
+              'option',
+              { key: true, value: true },
+              'ACTIVE'
+            ),
+            _react2.default.createElement(
+              'option',
+              { key: false, value: false },
+              'INACTIVE'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          _react2.default.createElement(
+            'select',
+            {
+              className: 'form-control',
+              ref: 'imagesCollectedRangeInput',
+              value: this.props.imagesCollectedFilter,
+              onChange: function onChange() {
+                return _this2.handleChange();
+              } },
+            _react2.default.createElement(
+              'option',
+              { value: '0' },
+              'Filter by Images Collected'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '1000' },
+              'greater than 1000'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '5000' },
+              'greater than 5000'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '10000' },
+              'greater than 10000'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '50000' },
+              'greater than 50000'
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-        // sets the filter entered by user
-        value: function handleChange() {
-            this.props.onUserInput(this.refs.filterTextInput.value, this.refs.statusInput.value, this.refs.imagesCollectedRangeInput.value);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'col-sm-12' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'col-sm-4' },
-                    _react2.default.createElement('input', {
-                        type: 'text',
-                        className: 'form-control',
-                        placeholder: 'Search in last command...',
-                        value: this.props.filterText,
-                        ref: 'filterTextInput',
-                        onChange: this.handleChange
-                    })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'col-sm-4' },
-                    _react2.default.createElement(
-                        'select',
-                        {
-                            className: 'form-control',
-                            value: this.props.statusFilter,
-                            ref: 'statusInput',
-                            onChange: this.handleChange },
-                        _react2.default.createElement(
-                            'option',
-                            { value: '' },
-                            'Filter by State'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { key: true, value: true },
-                            'ACTIVE'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { key: false, value: false },
-                            'INACTIVE'
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'col-sm-4' },
-                    _react2.default.createElement(
-                        'select',
-                        {
-                            className: 'form-control',
-                            ref: 'imagesCollectedRangeInput',
-                            value: this.props.imagesCollectedFilter,
-                            onChange: this.handleChange },
-                        _react2.default.createElement(
-                            'option',
-                            { value: '0' },
-                            'Filter by Images Collected'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { value: '1000' },
-                            'greater than 1000'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { value: '5000' },
-                            'greater than 5000'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { value: '10000' },
-                            'greater than 10000'
-                        ),
-                        _react2.default.createElement(
-                            'option',
-                            { value: '50000' },
-                            'greater than 50000'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Filters;
+  return Filters;
 }(_react.Component);
 
 Filters.propTypes = {
-    onUserInput: _propTypes2.default.func
+  onUserInput: _propTypes2.default.func
 };
+
 exports.default = Filters;
 
 /***/ }),
@@ -22401,7 +22422,7 @@ exports.default = Filters;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22422,115 +22443,115 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var style = { textAlign: 'left' };
+
 var AddNewDove = function (_Component) {
-    _inherits(AddNewDove, _Component);
+  _inherits(AddNewDove, _Component);
 
-    function AddNewDove() {
-        _classCallCheck(this, AddNewDove);
+  function AddNewDove() {
+    _classCallCheck(this, AddNewDove);
 
-        return _possibleConstructorReturn(this, (AddNewDove.__proto__ || Object.getPrototypeOf(AddNewDove)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (AddNewDove.__proto__ || Object.getPrototypeOf(AddNewDove)).apply(this, arguments));
+  }
+
+  _createClass(AddNewDove, [{
+    key: 'createDove',
+    value: function createDove() {
+      // get values from the form and create a dove object
+      var dove = {
+        active: this.refs.active.checked,
+        color: this.refs.color.value,
+        images_collected: this.refs.imagesCollected.value,
+        last_command: this.refs.lastCommand.value,
+        deorbit_dt: this.refs.deOrbit.value
+      };
+      this.props.onUserInput(dove);
+      // Reset the form after dove is created
+      this.refs.imagesCollected.value = '';
+      this.refs.lastCommand.value = '';
+      this.refs.color.value = '';
+      this.refs.deOrbit.value = '';
+      this.refs.active.checked = false;
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(AddNewDove, [{
-        key: 'createDove',
-        value: function createDove() {
-            // get values from the form and create a dove object
-            var dove = {
-                active: this.refs.active.checked,
-                color: this.refs.color.value,
-                images_collected: this.refs.imagesCollected.value,
-                last_command: this.refs.lastCommand.value,
-                deorbit_dt: this.refs.deOrbit.value
-            };
-            this.props.onUserInput(dove);
-            // Reset the form after dove is created
-            this.refs.imagesCollected.value = '';
-            this.refs.lastCommand.value = '';
-            this.refs.color.value = '';
-            this.refs.deOrbit.value = '';
-            this.refs.active.checked = false;
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+      return _react2.default.createElement(
+        'div',
+        { className: 'form-group col-sm-12' },
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          { style: style },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Create Dove'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement('input', { type: 'text',
+            className: 'form-control',
+            ref: 'lastCommand',
+            placeholder: 'Enter Last command' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement('input', { type: 'number',
+            className: 'form-control',
+            ref: 'imagesCollected',
+            placeholder: 'Images Collected' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement('input', { type: 'color',
+            className: 'form-control',
+            ref: 'color' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement('input', { type: 'checkbox',
+            ref: 'active', value: 'active' }),
+          ' Active'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement('input', { type: 'datetime',
+            className: 'form-control',
+            ref: 'deOrbit',
+            placeholder: 'Enter Datetime' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2' },
+          _react2.default.createElement(
+            'a',
+            { className: 'btn btn-primary btn-block',
+              onClick: function onClick() {
+                return _this2.createDove();
+              } },
+            'Add Dove'
+          )
+        )
+      );
+    }
+  }]);
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'label',
-                        null,
-                        'Create Dove'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'form-group col-sm-12' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement('input', { type: 'text',
-                            className: 'form-control',
-                            ref: 'lastCommand',
-                            placeholder: 'Enter Last command' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement('input', { type: 'number',
-                            className: 'form-control',
-                            ref: 'imagesCollected',
-                            placeholder: 'Images Collected' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement('input', { type: 'color',
-                            className: 'form-control',
-                            ref: 'color' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement('input', { type: 'checkbox',
-                            ref: 'active', value: 'active' }),
-                        ' Active'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement('input', { type: 'datetime',
-                            className: 'form-control',
-                            ref: 'deOrbit',
-                            placeholder: 'Enter Datetime' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-2' },
-                        _react2.default.createElement(
-                            'a',
-                            { className: 'btn btn-primary btn-block',
-                                onClick: function onClick() {
-                                    return _this2.createDove();
-                                } },
-                            'Add Dove'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AddNewDove;
+  return AddNewDove;
 }(_react.Component);
 
 AddNewDove.propTypes = {
-    onUserInput: _propTypes2.default.func
+  onUserInput: _propTypes2.default.func
 };
+
 exports.default = AddNewDove;
 
 /***/ }),
@@ -22541,7 +22562,7 @@ exports.default = AddNewDove;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -22557,49 +22578,49 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var initialState = {
-    doves: null,
-    status: null,
-    error: null,
-    loading: false
+  doves: null,
+  status: null,
+  error: null,
+  loading: false
 };
 
 function doves() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-    switch (action.type) {
-        case types.ADD_DOVE:
-            return _extends({}, state, { status: 'adding dove', loading: true });
-        case types.ADD_DOVE_SUCCESS:
-            var dovesAfterNewAdded = [].concat(_toConsumableArray(state.doves), [action.dove]);
-            return _extends({}, state, { doves: dovesAfterNewAdded, status: 'added', loading: false });
-        case types.ADD_DOVE_FAILURE:
-            var addError = action.error || { message: action.message };
-            return _extends({}, state, { status: 'failed', error: addError, loading: false });
+  switch (action.type) {
+    case types.ADD_DOVE:
+      return _extends({}, state, { status: 'adding dove', loading: true });
+    case types.ADD_DOVE_SUCCESS:
+      var dovesAfterNewAdded = [].concat(_toConsumableArray(state.doves), [action.dove]);
+      return _extends({}, state, { doves: dovesAfterNewAdded, status: 'added', loading: false });
+    case types.ADD_DOVE_FAILURE:
+      var addError = action.error || { message: action.message };
+      return _extends({}, state, { status: 'failed', error: addError, loading: false });
 
-        case types.DELETE_DOVE:
-            return _extends({}, state, { status: 'deleting dove', error: null, loading: true });
-        case types.DELETE_DOVE_SUCCESS:
-            var dovesAfterDeletion = state.doves.filter(function (_ref) {
-                var id = _ref.id;
-                return id !== action.dove;
-            });
-            return _extends({}, state, { doves: dovesAfterDeletion, status: 'deleted', loading: false });
-        case types.DELETE_DOVE_FAILURE:
-            var deleteError = action.error || { message: action.message };
-            return _extends({}, state, { status: 'failed', error: deleteError, loading: false });
+    case types.DELETE_DOVE:
+      return _extends({}, state, { status: 'deleting dove', error: null, loading: true });
+    case types.DELETE_DOVE_SUCCESS:
+      var dovesAfterDeletion = state.doves.filter(function (_ref) {
+        var id = _ref.id;
+        return id !== action.dove;
+      });
+      return _extends({}, state, { doves: dovesAfterDeletion, status: 'deleted', loading: false });
+    case types.DELETE_DOVE_FAILURE:
+      var deleteError = action.error || { message: action.message };
+      return _extends({}, state, { status: 'failed', error: deleteError, loading: false });
 
-        case types.GET_DOVES:
-            return _extends({}, state, { status: 'retrieving doves', loading: true });
-        case types.GET_DOVES_SUCCESS:
-            return _extends({}, state, { doves: action.doves, status: 'retrieved', loading: false });
-        case types.GET_DOVES_FAILURE:
-            var getError = action.error || { message: action.message };
-            return _extends({}, state, { doves: null, status: 'error', error: getError, loading: false });
+    case types.GET_DOVES:
+      return _extends({}, state, { status: 'retrieving doves', loading: true });
+    case types.GET_DOVES_SUCCESS:
+      return _extends({}, state, { doves: action.doves, status: 'retrieved', loading: false });
+    case types.GET_DOVES_FAILURE:
+      var getError = action.error || { message: action.message };
+      return _extends({}, state, { doves: null, status: 'error', error: getError, loading: false });
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
 
 /***/ }),
@@ -22647,27 +22668,27 @@ exports['default'] = thunk;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 var loadState = exports.loadState = function loadState() {
-    try {
-        var serializedState = localStorage.getItem('state');
-        if (serializedState === null) {
-            return undefined;
-        }
-        return JSON.parse(serializedState);
-    } catch (err) {
-        return undefined;
+  try {
+    var serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
     }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
 };
 
 var savedState = exports.savedState = function savedState(state) {
-    try {
-        var serializedState = JSON.stringify(state);
-        localStorage.setItem('state', serializedState);
-    } catch (err) {
-        console.log(err);
-    }
+  try {
+    var serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 /***/ })

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const style = { textAlign: 'left' };
+
 class AddNewDove extends Component{
   createDove() {
     // get values from the form and create a dove object
@@ -22,48 +24,49 @@ class AddNewDove extends Component{
 
   render(){
     return(
-      <div>
-        <div>
+      <div className='form-group col-sm-12'>
+        <br />
+        <div style={style}>
           <label>Create Dove</label>
         </div>
-        <div className='form-group col-sm-12'>
-          <div className='col-sm-2'>
-            <input type='text' 
-            className='form-control' 
-            ref='lastCommand' 
-            placeholder='Enter Last command' />
-          </div>
-          <div className='col-sm-2'>
-            <input type='number' 
-            className='form-control' 
-            ref='imagesCollected' 
-            placeholder='Images Collected' />
-          </div>
-          <div className='col-sm-2'>
-            <input type='color' 
-            className='form-control' 
-            ref='color' />
-          </div>
-          <div className='col-sm-2'>
-            <input type='checkbox'  
-            ref='active' value='active' /> Active
-          </div>
-          <div className='col-sm-2'>
-            <input type='datetime' 
-            className='form-control' 
-            ref='deOrbit' 
-            placeholder='Enter Datetime' />
-          </div>
-          <div className='col-sm-2'>
-            <a className='btn btn-primary btn-block'
-            onClick={() => this.createDove()}>Add Dove</a>
-           </div>
+        <div className='col-sm-2'>
+          <input type='text' 
+          className='form-control' 
+          ref='lastCommand' 
+          placeholder='Enter Last command' />
         </div>
+        <div className='col-sm-2'>
+          <input type='number' 
+          className='form-control' 
+          ref='imagesCollected' 
+          placeholder='Images Collected' />
+        </div>
+        <div className='col-sm-2'>
+          <input type='color' 
+          className='form-control' 
+          ref='color' />
+        </div>
+        <div className='col-sm-2'>
+          <input type='checkbox'  
+          ref='active' value='active' /> Active
+        </div>
+        <div className='col-sm-2'>
+          <input type='datetime' 
+          className='form-control' 
+          ref='deOrbit' 
+          placeholder='Enter Datetime' />
+        </div>
+        <div className='col-sm-2'>
+          <a className='btn btn-primary btn-block'
+          onClick={() => this.createDove()}>Add Dove</a>
+         </div>
       </div>
     );
   }
 }
+
 AddNewDove.propTypes = {
   onUserInput: PropTypes.func,
 };
+
 export default AddNewDove;

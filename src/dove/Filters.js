@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const style = { textAlign: 'left' };
+
 class Filters extends Component {
   // sets the filter entered by user
   handleChange() {
@@ -14,6 +16,10 @@ class Filters extends Component {
   render() {
     return (
       <div className='col-sm-12'>
+          <br />
+        <div style={style}>
+          <label>Filter Doves</label>
+        </div>
         <div className='col-sm-4'>
           <input
             type='text'
@@ -21,14 +27,14 @@ class Filters extends Component {
             placeholder='Search in last command...'
             value={this.props.filterText}
             ref='filterTextInput'
-            onChange={this.handleChange} />
+            onChange={() => this.handleChange()} />
         </div>
         <div className='col-sm-4'>
           <select
             className='form-control'
             value={this.props.statusFilter}
             ref='statusInput'
-            onChange={this.handleChange}>
+            onChange={() => this.handleChange()}>
             <option value=''>Filter by State</option>
             <option key={true} value={true}>ACTIVE</option>
             <option key={false} value={false}>INACTIVE</option>
@@ -39,7 +45,7 @@ class Filters extends Component {
             className='form-control'
             ref='imagesCollectedRangeInput'
             value={this.props.imagesCollectedFilter}
-            onChange={this.handleChange}>
+            onChange={() => this.handleChange()}>
             <option value='0'>Filter by Images Collected</option>
             <option value='1000'>greater than 1000</option>
             <option value='5000'>greater than 5000</option>
